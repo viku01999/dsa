@@ -4,9 +4,11 @@ public class MainClass {
 
     public static void main(String[] args) {
         PaymentMethod paymentMethod = new PaypalPayment();
-        PaymentService paymentService = new PaymentService(paymentMethod);
+        Refundable refundable = new CreditCardPayment();
+        PaymentService paymentService = new PaymentService(paymentMethod, refundable);
 
         paymentService.makePayment(45);
+        paymentService.refundPayment(40);
     }
 
 }
